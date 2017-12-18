@@ -1,20 +1,17 @@
 # Comprobante Fiscal Digital por Internet (CFDI v3.3)
 
-[![Travis](https://img.shields.io/travis/orlandocharles/cfdi.svg?style=flat-square)](https://travis-ci.org/orlandocharles/cfdi) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/orlandocharles/cfdi) [![License](https://img.shields.io/github/license/orlandocharles/cfdi.svg?style=flat-square)](https://packagist.org/packages/orlandocharles/cfdi) [![Donate](https://img.shields.io/badge/Donate-PayPal-3b7bbf.svg?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2KAFWPGPMKHJ)
-
 - [Instalación](#instalación)
 - [Uso](#uso)
 - [Licencia](#licencia)
-- [Donación](#donación)
 
 ## Instalación
 
-> Nota: el proyecto se encuentra en desarrollo.
+> Nota: Este repositorio es un fork de: https://github.com/orlandocharles/cfdi con algunas modificaciones.
 
 Para instalar el paquete mediante [Composer](https://getcomposer.org/).
 
 ```shell
-composer require orlandocharles/cfdi
+composer require blacktrue/cfdiv33
 ```
 
 ## Uso
@@ -41,9 +38,9 @@ composer require orlandocharles/cfdi
 - [Cuenta Predial](#cuenta-predial)
 - [Parte](#parte)
 - [Complemento Pagos](#pago)
-        - [Documento Relacionado](#pago-documento-relacionado)
-        - [Impuesto retenido](#retención-en-pago)
-        - [Impuesto trasladado](#traslado-en-pago)
+    - [Documento Relacionado](#pago-documento-relacionado)
+    - [Impuesto retenido](#retención-en-pago)
+    - [Impuesto trasladado](#traslado-en-pago)
         
         
 ### CFDI
