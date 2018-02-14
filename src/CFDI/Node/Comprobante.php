@@ -28,6 +28,13 @@ class Comprobante extends Node
     protected $version;
 
     /**
+     * CFDI version.
+     *
+     * @var boolean
+     */
+    protected $nomina;
+
+    /**
      * Node name.
      *
      * @var string
@@ -43,6 +50,7 @@ class Comprobante extends Node
     public function __construct($data, $version)
     {
         $this->version = $version;
+        $this->nomina = ($data['TipoDeComprobante'] === 'N') ? TRUE : FALSE;
         $data = array_merge($this->attributes(), $data);
 
         parent::__construct($data);
@@ -55,11 +63,15 @@ class Comprobante extends Node
      */
     public function attributes()
     {
-        return [
+        $schema = "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd";
+        if($this->nomina){ $schema .= " http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd"; }
+        $attribute = [
             'xmlns:cfdi' => 'http://www.sat.gob.mx/cfd/3',
             'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-            'xsi:schemaLocation' => 'http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
+            'xsi:schemaLocation' => $schema,
             'Version' => $this->version,
         ];
+        if($this->nomina){ $attribute['xmlns:nomina12'] = "http://www.sat.gob.mx/nomina12"; }
+        return $attribute;
     }
 }
