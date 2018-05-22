@@ -7,26 +7,34 @@
  * file that was distributed with this source code.
  */
 
-namespace Charles\CFDI\Node\Complemento\Nomina\Percepcion;
+namespace Charles\CFDI\Node\Complemento\Nomina\Incapacidad;
 
 use Charles\CFDI\Common\Node;
 
 /**
- * This is the Percepcion class.
+ * This is the Incapacidad Details class.
  *
  * @author Ethel Gonzalez <emmelaine.glz@gmail.com>
  */
- class Percepcion extends Node
+ class Incapacidad extends Node
  {
      /**
       * Node name.
       *
       * @var string
       */
-     protected $nodeName = 'nomina12:Percepciones';
+     protected $parentNodeName = 'nomina12:Incapacidades';
 
      /**
-      * Percepcion constructor.
+      * Node name.
+      *
+      * @var string
+      */
+     protected $nodeName = 'nomina12:Incapacidad';
+
+
+     /**
+      * Deduccion Details constructor.
       * @param array $data
       */
      public function __construct(array $data = [])
