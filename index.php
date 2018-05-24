@@ -11,6 +11,9 @@ use Charles\CFDI\Node\Complemento\Nomina\ReceptorN;
 use Charles\CFDI\Node\Complemento\Nomina\Deduccion\Deduccion;
 use Charles\CFDI\Node\Complemento\Nomina\Percepcion\Percepcion;
 use Charles\CFDI\Node\Complemento\Nomina\Incapacidad\Incapacidad;
+use Charles\CFDI\Node\Complemento\Nomina\OtrosPagos\OtrosPagos;
+use Charles\CFDI\Node\Complemento\Nomina\OtrosPagos\SubsidioAlEmpleo;
+use Charles\CFDI\Node\Complemento\Nomina\OtrosPagos\CompensacionSaldosAFavor;
 use Charles\CFDI\Node\Complemento\Nomina\Deduccion\DetalleDeduccion;
 use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetallePercepcion;
 
@@ -128,6 +131,24 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetallePercepcion;
     'ImporteMonetario' => '1200.50',
   ]));
 
+  $oPagos =new OtrosPagos([
+    'TipoOtroPago' => '002',
+    'Clave' => 'P600',
+    'Concepto' => 'SUBSIDIO AL EMPLEO',
+    'Importe' => '188.70'
+  ]);
+
+  $oPagos->add(new SubsidioAlEmpleo([
+    'SubsidioCausado' => '188.70'
+  ]));
+
+  $oPagos->add(new CompensacionSaldosAFavor([
+    'SaldoAFavor' => '1.5',
+    'Año' => '2018',
+    'RemanenteSalFav' => '1.5'
+  ]));
+
+  $nomina->add($oPagos);
   $cfdi->add($nomina);
   //$cfdi->add($deduccion);
 

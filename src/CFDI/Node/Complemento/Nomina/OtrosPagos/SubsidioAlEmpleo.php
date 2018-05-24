@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Charles\CFDI\Node\Complemento\Nomina\Incapacidad;
+namespace Charles\CFDI\Node\Complemento\Nomina\OtrosPagos;
 
 use Charles\CFDI\Common\Node;
 
@@ -16,22 +16,14 @@ use Charles\CFDI\Common\Node;
  *
  * @author Ethel Gonzalez <emmelaine.glz@gmail.com>
  */
- class Incapacidad extends Node
+ class SubsidioAlEmpleo extends Node
  {
      /**
       * Node name.
       *
       * @var string
       */
-     protected $parentNodeName = 'nomina12:Incapacidades';
-
-     /**
-      * Node name.
-      *
-      * @var string
-      */
-     protected $nodeName = 'nomina12:Incapacidad';
-
+     protected $nodeName = 'nomina12:SubsidioAlEmpleo';
 
      /**
       * Deduccion Details constructor.
