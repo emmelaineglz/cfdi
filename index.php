@@ -16,6 +16,7 @@ use Charles\CFDI\Node\Complemento\Nomina\OtrosPagos\SubsidioAlEmpleo;
 use Charles\CFDI\Node\Complemento\Nomina\OtrosPagos\CompensacionSaldosAFavor;
 use Charles\CFDI\Node\Complemento\Nomina\Deduccion\DetalleDeduccion;
 use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetallePercepcion;
+use Charles\CFDI\Node\Complemento\Nomina\Percepcion\HorasExtras;
 
   $cer = file_get_contents('../uploads/moot9104055s8.cer.pem');
   $key = file_get_contents('../uploads/moot9104055s8.key.pem');
@@ -117,12 +118,18 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetallePercepcion;
     'TotalExento' => '0.00'
   ]));
 
-  $nomina->add(new DetallePercepcion([
-    'TipoPercepcion' => '002',
-    'Clave' => '021',
-    'Concepto' => 'ISR',
-    'ImporteGravado' => '1062.06',
-    'ImporteExento' => '0.00'
+  $detallePercepcion = new DetallePercepcion([
+    'TipoPercepcion' => '019',
+    'Clave' => 'P019',
+    'Concepto' => 'TIEMPO EXTRA DOBLE',
+    'ImporteGravado' => '0.00',
+    'ImporteExento' => '225.00'
+  ]);
+  $detallePercepcion->add(new HorasExtras([
+    'Dias' => '2',
+    'TipoHoras' => '01',
+    'HorasExtra' => '6',
+    'ImportePagado' => '225'
   ]));
 
   $nomina->add(new Incapacidad([
@@ -149,6 +156,7 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetallePercepcion;
   ]));
 
   $nomina->add($oPagos);
+  $nomina->add($detallePercepcion);
   $cfdi->add($nomina);
   //$cfdi->add($deduccion);
 
