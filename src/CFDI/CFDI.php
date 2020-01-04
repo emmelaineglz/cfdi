@@ -141,7 +141,8 @@ class CFDI
         $this->comprobante->setAtributes(
             $this->comprobante->getElement(),
             [
-                'Sello' => $this->getSello()
+                //'Sello' => $this->getSello()
+                'Sello' => ""
             ]
         );
     }

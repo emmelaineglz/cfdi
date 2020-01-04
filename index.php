@@ -16,6 +16,9 @@ use Charles\CFDI\Node\Complemento\Nomina\OtrosPagos\SubsidioAlEmpleo;
 use Charles\CFDI\Node\Complemento\Nomina\OtrosPagos\CompensacionSaldosAFavor;
 use Charles\CFDI\Node\Complemento\Nomina\Deduccion\DetalleDeduccion;
 use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetallePercepcion;
+use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetallePercepcionPPP;
+use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetPercIndenmizacion;
+use Charles\CFDI\Node\Complemento\Nomina\Percepcion\HorasExtras;
 
   $cer = file_get_contents('../uploads/moot9104055s8.cer.pem');
   $key = file_get_contents('../uploads/moot9104055s8.key.pem');
@@ -117,13 +120,31 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetallePercepcion;
     'TotalExento' => '0.00'
   ]));
 
-  $nomina->add(new DetallePercepcion([
-    'TipoPercepcion' => '002',
-    'Clave' => '021',
-    'Concepto' => 'ISR',
-    'ImporteGravado' => '1062.06',
-    'ImporteExento' => '0.00'
-  ]));
+  $detallePercepcion = new DetallePercepcion([
+    'TipoPercepcion' => '019',
+    'Clave' => 'P019',
+    'Concepto' => 'TIEMPO EXTRA DOBLE',
+    'ImporteGravado' => '0.00',
+    'ImporteExento' => '225.00'
+  ]);
+  $detallePercepcionPPP = new DetallePercepcionPPP([
+    'TotalUnaExhibicion' => '200',
+    'IngresoAcumulable' => '0.00',
+    'IngresoNoAcumulable' => '0.00'
+  ]);
+  $detPercIndemnizacion = new DetPercIndenmizacion([
+    'TotalPagado' => '1500.00',
+    'NumAñosServicio' => '1',
+    'UltimoSueldoMensOrd' => '1500.00',
+    'IngresoAcumulable' => '0.00',
+    'IngresoNoAcumulable' => '0.00'
+  ]);
+  /*$detallePercepcion->add(new HorasExtras([
+    'Dias' => '2',
+    'TipoHoras' => '01',
+    'HorasExtra' => '6',
+    'ImportePagado' => '225'
+  ]));*/
 
   $nomina->add(new Incapacidad([
     'DiasIncapacidad' => '2',
@@ -149,6 +170,9 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetallePercepcion;
   ]));
 
   $nomina->add($oPagos);
+  $nomina->add($detallePercepcion);
+  $nomina->add($detallePercepcionPPP);
+  $nomina->add($detPercIndemnizacion);
   $cfdi->add($nomina);
   //$cfdi->add($deduccion);
 
