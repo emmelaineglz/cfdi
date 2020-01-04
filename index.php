@@ -17,6 +17,7 @@ use Charles\CFDI\Node\Complemento\Nomina\OtrosPagos\CompensacionSaldosAFavor;
 use Charles\CFDI\Node\Complemento\Nomina\Deduccion\DetalleDeduccion;
 use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetallePercepcion;
 use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetallePercepcionPPP;
+use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetPercIndenmizacion;
 use Charles\CFDI\Node\Complemento\Nomina\Percepcion\HorasExtras;
 
   $cer = file_get_contents('../custom-files/moot9104055s8.cer.pem');
@@ -132,6 +133,13 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\HorasExtras;
     'IngresoAcumulable' => '0.00',
     'IngresoNoAcumulable' => '0.00'
   ]);
+  $detPercIndemnizacion = new DetPercIndenmizacion([
+    'TotalPagado' => '1500.00',
+    'NumAñosServicio' => '1',
+    'UltimoSueldoMensOrd' => '1500.00',
+    'IngresoAcumulable' => '0.00',
+    'IngresoNoAcumulable' => '0.00'
+  ]);
   /*$detallePercepcion->add(new HorasExtras([
     'Dias' => '2',
     'TipoHoras' => '01',
@@ -165,6 +173,7 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\HorasExtras;
   $nomina->add($oPagos);
   $nomina->add($detallePercepcion);
   $nomina->add($detallePercepcionPPP);
+  $nomina->add($detPercIndemnizacion);
   $cfdi->add($nomina);
   //$cfdi->add($deduccion);
 
