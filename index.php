@@ -38,6 +38,7 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\HorasExtras;
       'TipoDeComprobante' => 'N',
       'MetodoPago' => 'PUE',
       'LugarExpedicion' => '64000',
+      'Version' => '3.3'
   ], $cer, $key);
 
   $cfdi->add(new Emisor([
@@ -49,7 +50,9 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\HorasExtras;
   $cfdi->add(new Receptor([
     "Rfc" => "ROPJ911121F83",
     "Nombre" => "RODRIGUEZ PINTO JUANA CORINA",
-    "UsoCFDI" => "P01"
+    "UsoCFDI" => "P01",
+    "RegimenFiscalReceptor" => "605",
+    "DomicilioFiscalReceptor" => "02240"
   ]));
 
   $cfdi->add(new Concepto([
@@ -59,6 +62,7 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\HorasExtras;
     'Unidad' => 'Pieza',
     'Descripcion' => 'Pago de nómina',
     'ValorUnitario' => '11499.90',
+    'ObjetoImp' => '01',
     'Importe' => '11499.90',
     'Descuento' => '2147.91',
   ]));
