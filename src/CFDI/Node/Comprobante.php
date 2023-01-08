@@ -47,12 +47,15 @@ class Comprobante extends Node
      * @param array   $data
      * @param string  $version
      */
-    public function __construct($data, $version)
+    public function __construct($data)
     {
-        $this->version = $version;
+        $this->version = $data['Version'];
         $this->nomina = ($data['TipoDeComprobante'] === 'N') ? TRUE : FALSE;
-        $data = array_merge($this->attributes(), $data);
-
+        if ( $data['Version'] === '4.0') {
+            $data = array_merge($this->attributes40(), $data);
+        } else {
+            $data = array_merge($this->attributes33(), $data);
+        }
         parent::__construct($data);
     }
 
@@ -61,7 +64,7 @@ class Comprobante extends Node
      *
      * @return array
      */
-    public function attributes()
+    public function attributes33()
     {
         $schema = "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd";
         if($this->nomina){ $schema .= " http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd"; }
@@ -74,4 +77,23 @@ class Comprobante extends Node
         if($this->nomina){ $attribute['xmlns:nomina12'] = "http://www.sat.gob.mx/nomina12"; }
         return $attribute;
     }
+    
+    /**
+    * Node attributes.
+    *
+    * @return array
+    */
+   public function attributes40()
+   {
+       $schema = "http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd";
+       if($this->nomina){ $schema .= " http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd"; }
+       $attribute = [
+           'xmlns:cfdi' => 'http://www.sat.gob.mx/cfd/4',
+           'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
+           'xsi:schemaLocation' => $schema,
+           'Version' => $this->version,
+       ];
+       if($this->nomina){ $attribute['xmlns:nomina12'] = "http://www.sat.gob.mx/nomina12"; }
+       return $attribute;
+   }
 }
