@@ -20,8 +20,8 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetallePercepcionPPP;
 use Charles\CFDI\Node\Complemento\Nomina\Percepcion\DetPercIndenmizacion;
 use Charles\CFDI\Node\Complemento\Nomina\Percepcion\HorasExtras;
 
-  $cer = file_get_contents('../custom-files/moot9104055s8.cer.pem');
-  $key = file_get_contents('../custom-files/moot9104055s8.key.pem');
+  $cer = file_get_contents('./keys/CCD110601RB6_C.pem');
+  $key = file_get_contents('./keys/CCD110601RB6_K.pem');
 
   $cfdi = new CFDI([
       'Serie' => 'A',
@@ -38,11 +38,11 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\HorasExtras;
       'TipoDeComprobante' => 'N',
       'MetodoPago' => 'PUE',
       'LugarExpedicion' => '64000',
-      'Version' => '3.3'
+      'Version' => '4.0'
   ], $cer, $key);
 
   $cfdi->add(new Emisor([
-    "Rfc" => "ILD041028IT1",
+    "Rfc" => "CCD110601RB6",
     "Nombre" => "INNOVACION EN LOGISTICA Y DISTRIBUCION, SA DE CV",
     "RegimenFiscal" => "601"
   ]));
