@@ -56,6 +56,11 @@ class CFDI
      */
     protected $xslt;
 
+     /**
+     * @var string
+     */
+    protected $v;
+
     /**
      * Comprobante instance.
      *
@@ -77,6 +82,7 @@ class CFDI
         $this->cer = $cer;
         $this->key = $key;
         $this->xslt = $xslt;
+        $this->v = $data['Version'];
     }
 
     /**
@@ -138,13 +144,22 @@ class CFDI
      */
     protected function putSello()
     {
-        $this->comprobante->setAtributes(
-            $this->comprobante->getElement(),
-            [
-                //'Sello' => $this->getSello()
-                'Sello' => ""
-            ]
-        );
+        if ($this->v === '4.0') {
+            $this->comprobante->setAtributes(
+                $this->comprobante->getElement(),
+                [
+                    'Sello' => $this->getSello()
+                ]
+            );
+        } else {
+            $this->comprobante->setAtributes(
+                $this->comprobante->getElement(),
+                [
+                    'Sello' => ""
+                ]
+            );
+        }
+        
     }
 
     /**
