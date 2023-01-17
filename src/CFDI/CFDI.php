@@ -108,9 +108,15 @@ class CFDI
 
         if ($this->xslt) {
             $path = __DIR__.'/Utils/cadenaoriginal_3_3.xslt';
+            if ($this->v === '4.0') {
+                $path = __DIR__.'/Utils/cadenaoriginal_4_0.xslt';
+            }
             $xslt = file_get_contents($path);
         } else {
             $xslt = static::XSL_ENDPOINT;
+            if ($this->v === '4.0') {
+                $xslt = 'http://www.sat.gob.mx/sitio_internet/cfd/4/cadenaoriginal_4_0/cadenaoriginal_4_0.xslt';
+            }
         }
 
         $xsl->load($xslt);
