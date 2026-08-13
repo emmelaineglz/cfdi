@@ -8,6 +8,7 @@ use Charles\CFDI\Node\Concepto;
 use Charles\CFDI\Node\Complemento\Nomina\Nomina;
 use Charles\CFDI\Node\Complemento\Nomina\EmisorN;
 use Charles\CFDI\Node\Complemento\Nomina\ReceptorN;
+use Charles\CFDI\Node\Complemento\Nomina\SubContratacion;
 use Charles\CFDI\Node\Complemento\Nomina\Deduccion\Deduccion;
 use Charles\CFDI\Node\Complemento\Nomina\Percepcion\Percepcion;
 use Charles\CFDI\Node\Complemento\Nomina\Incapacidad\Incapacidad;
@@ -96,6 +97,12 @@ use Charles\CFDI\Node\Complemento\Nomina\Percepcion\HorasExtras;
     "TipoJornada" => "01",
     "TipoRegimen" => "02"
   ]));
+
+  $nomina->add(new SubContratacion([
+    "RfcLabora" => "IXX0101010XX",
+    "PorcentajeTiempo" => "0.00"
+  ]));
+
   $nomina->add(new Deduccion([
     "TotalImpuestosRetenidos" => "203.59",
     "TotalOtrasDeducciones" => "0.00"
