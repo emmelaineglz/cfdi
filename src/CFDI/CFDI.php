@@ -150,22 +150,13 @@ class CFDI
      */
     protected function putSello()
     {
-        if ($this->v === '4.0') {
-            $this->comprobante->setAtributes(
-                $this->comprobante->getElement(),
-                [
-                    'Sello' => $this->getSello()
-                ]
-            );
-        } else {
-            $this->comprobante->setAtributes(
-                $this->comprobante->getElement(),
-                [
-                    'Sello' => ""
-                ]
-            );
-        }
         
+        $this->comprobante->setAtributes(
+            $this->comprobante->getElement(),
+            [
+                'Sello' => ""
+            ]
+        );
     }
 
     /**
